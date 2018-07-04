@@ -58,7 +58,6 @@ class hello : AppCompatActivity() {
         Log.d("onClick", view.toString())
         Log.d("onClick", view.id.toString())
 
-
         val intent = Intent(this,ActivityB::class.java)
         startActivity(intent)
     }
