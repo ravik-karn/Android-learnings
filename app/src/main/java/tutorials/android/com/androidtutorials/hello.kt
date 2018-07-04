@@ -1,5 +1,6 @@
 package tutorials.android.com.androidtutorials
 
+import android.content.Intent
 import android.content.res.Configuration
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -56,6 +57,10 @@ class hello : AppCompatActivity() {
     fun buttonClicked(view: View) {
         Log.d("onClick", view.toString())
         Log.d("onClick", view.id.toString())
+
+
+        val intent = Intent(this,ActivityB::class.java)
+        startActivity(intent)
     }
 
     override fun onSaveInstanceState(outState: Bundle?, outPersistentState: PersistableBundle?) {
@@ -66,7 +71,9 @@ class hello : AppCompatActivity() {
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
         super.onRestoreInstanceState(savedInstanceState)
-        counter = savedInstanceState.getInt("counter")
+        if (savedInstanceState != null) {
+            counter = savedInstanceState.getInt("counter")
+        }
         Log.d("onRestoreInstanceState", "counter $counter restored")
     }
 }
