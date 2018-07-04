@@ -6,7 +6,11 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.util.Log
+import android.view.Gravity
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
+import android.widget.Toast
 
 class hello : AppCompatActivity() {
     var counter = 0
@@ -58,8 +62,17 @@ class hello : AppCompatActivity() {
         Log.d("onClick", view.toString())
         Log.d("onClick", view.id.toString())
 
-        val intent = Intent(this,ActivityB::class.java)
+        val intent = Intent(this, ActivityB::class.java)
         startActivity(intent)
+
+        val toast = Toast(this)
+        toast.duration = Toast.LENGTH_LONG
+        toast.setGravity(Gravity.BOTTOM, 0, 0)
+
+        val inflator = layoutInflater
+        val toast_apperance = inflator.inflate(R.layout.toast_layout, findViewById(R.id.custom_layout))
+        toast.view = toast_apperance
+        toast.show()
     }
 
     override fun onSaveInstanceState(outState: Bundle?, outPersistentState: PersistableBundle?) {
